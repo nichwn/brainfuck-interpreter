@@ -16,6 +16,6 @@ brainfuck_interpreter <input code file name>
 Changelog
 ---------
 
-### v0.1
+### v0.1.0
 
 * Initial release
