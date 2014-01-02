@@ -3,6 +3,7 @@
 #include <stack>
 #include <deque>
 #include <fstream>
+#include <cstdlib>
 
 using std::vector;
 using std::stack;
@@ -24,6 +25,7 @@ vector<char>::iterator skip_block(vector<char>::iterator i_it);
 void read(vector<char> &i_vc, ifstream &is) {
 	char c;
 	is.get(c);
+
 	while (!is.eof()) {
 		i_vc.push_back(c);
 		is.get(c);
@@ -75,6 +77,7 @@ void interp(vector<unsigned char> &cells, vector<char> &i_vc) {
  */
 vector<char>::iterator skip_block(vector<char>::iterator i_it) {
 	int count = 0;
+
 	for (++i_it; ; ++i_it) {
 		if (*i_it == ']' && count == 0) {
 			return i_it;
@@ -88,13 +91,18 @@ vector<char>::iterator skip_block(vector<char>::iterator i_it) {
 
 /****************************************************************/
 
-int main() {
-	// TODO - add options for other brainfuck code locations
-	// TODO - improve interface
+int main(int argc, char *argv[]) {
 	const int Cells = 30000;
 	vector<unsigned char> cells(Cells, 0);
 	vector<char> i_vc;
-	ifstream is("hello_world.b");
+	
+	if (argc < 2) {
+		// no brainfuck file provided
+		cout << "Usage: function_prototype_extractor "
+			"<input code file name>\n";
+			return EXIT_FAILURE;
+	}
+	ifstream is(argv[1]);
 	read(i_vc, is);
 	interp(cells, i_vc);
 	return 0;
