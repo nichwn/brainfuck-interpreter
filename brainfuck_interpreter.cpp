@@ -98,7 +98,7 @@ int main(int argc, char *argv[]) {
 	
 	if (argc < 2) {
 		// no brainfuck file provided
-		cout << "Usage: function_prototype_extractor "
+		cout << "Usage: brainfuck_interpreter "
 			"<input code file name>\n";
 			return EXIT_FAILURE;
 	}
