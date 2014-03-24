@@ -10,7 +10,7 @@ It has been designed for C++11.
 Usage
 -----
 
-brainfuck_interpreter <input code file name>
+brainfuck_interpreter input_code_file_name
 
 
 Changelog
